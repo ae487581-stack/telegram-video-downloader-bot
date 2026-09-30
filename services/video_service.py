@@ -216,6 +216,11 @@ def cleanup_files(paths: list[str]) -> None:
     """Remove a list of files, ignoring errors."""
     for path in paths:
         try:
+            ydl_opts = {
+    "quiet": True,
+    "cookiefile": "/app/cookies.txt",   # ← добавить эту строку
+    ...
+}
             if os.path.exists(path):
                 os.remove(path)
         except OSError as exc:
